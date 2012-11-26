@@ -1,4 +1,4 @@
-package guestbook;
+package jp.co.DDJ.guestbook.jdoutil;
 
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManagerFactory;

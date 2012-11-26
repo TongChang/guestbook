@@ -4,8 +4,8 @@
 <%@ page import="com.google.appengine.api.users.User" %>
 <%@ page import="com.google.appengine.api.users.UserService" %>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
-<%@ page import="guestbook.Greeting" %>
-<%@ page import="guestbook.PMF" %>
+<%@ page import="jp.co.DDJ.guestbook.jdovo.Greeting" %>
+<%@ page import="jp.co.DDJ.guestbook.jdoutil.PMF" %>
 
 <html>
   <head>

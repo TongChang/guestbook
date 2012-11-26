@@ -1,4 +1,4 @@
-package guestbook;
+package jp.co.DDJ.guestbook.jdovo;
 
 import java.util.Date;
 

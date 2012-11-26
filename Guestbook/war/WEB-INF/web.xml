@@ -2,7 +2,7 @@
 
 	<servlet>
 		<servlet-name>Guestbook</servlet-name>
-		<servlet-class>guestbook.GuestbookServlet</servlet-class>
+		<servlet-class>jp.co.DDJ.guestbook.servlet.GuestbookServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Guestbook</servlet-name>
@@ -14,7 +14,7 @@
 
     <servlet>
         <servlet-name>sign</servlet-name>
-        <servlet-class>guestbook.SignGuestbookServlet</servlet-class>
+        <servlet-class>jp.co.DDJ.guestbook.servlet.SignGuestbookServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>sign</servlet-name>

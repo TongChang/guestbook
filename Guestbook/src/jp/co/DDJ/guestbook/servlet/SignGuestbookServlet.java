@@ -1,4 +1,5 @@
-package guestbook;
+package jp.co.DDJ.guestbook.servlet;
+
 
 import java.io.IOException;
 import java.util.Date;
@@ -7,6 +8,9 @@ import javax.jdo.PersistenceManager;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import jp.co.DDJ.guestbook.jdoutil.PMF;
+import jp.co.DDJ.guestbook.jdovo.Greeting;
 
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
