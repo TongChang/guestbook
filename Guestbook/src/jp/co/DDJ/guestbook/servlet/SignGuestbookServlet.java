@@ -4,41 +4,65 @@ package jp.co.DDJ.guestbook.servlet;
 import java.io.IOException;
 import java.util.Date;
 
-import javax.jdo.PersistenceManager;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import jp.co.DDJ.guestbook.jdoutil.PMF;
-import jp.co.DDJ.guestbook.jdovo.Greeting;
+import jp.co.DDJ.guestbook.datastore.dao.GreetingDAO;
+import jp.co.DDJ.guestbook.util.Request;
+import jp.co.DDJ.guestbook.util.UserInfo;
 
-import com.google.appengine.api.users.User;
-import com.google.appengine.api.users.UserService;
-import com.google.appengine.api.users.UserServiceFactory;
-
+/**
+ *
+ * <p>
+ * ゲストブック登録用サーブレットクラス。
+ * </p>
+ *
+ * <pre>
+ * ゲストブックにデータを登録するための業務ロジッククラスです。
+ * </pre>
+ *
+ * @author としふに
+ *
+ */
 public class SignGuestbookServlet extends HttpServlet {
-	// ロガーの定義
-//	private static final Logger log = Logger.getLogger(SignGuestbookServlet.class.getName());
 
-	public void doPost(HttpServletRequest req,HttpServletResponse resp) throws IOException {
+	/**
+	 *
+	 * <p>
+	 * doPostメソッド。
+	 * </p>
+	 *
+	 * <pre>
+	 * postリクエスト時に呼び出されるメソッドです。
+	 * 渡されたリクエストを使用して、ゲストブックにデータを登録します。
+	 * </pre>
+	 *
+	 * @param req HTTPレスポンス
+	 * @param resp HHTPレスポンス
+	 */
+	public final void doPost(HttpServletRequest req, HttpServletResponse resp) {
 		// ユーザ情報を取得
-		UserService userservice = UserServiceFactory.getUserService();
-		User user = userservice.getCurrentUser();
+		UserInfo ui = new UserInfo(req);
 
-		// リクエスト情報からGreetingを生成
-		Greeting greeting = new Greeting(user,req.getParameter("content"),new Date());
-
-		PersistenceManager pm = PMF.get().getPersistenceManager();
-		try {
-			pm.makePersistent(greeting);
-		} finally {
-			pm.close();
+		// ログイン情報取得精査
+		if (ui.getUser() == null) {
+			try {
+				// 未ログインの場合はログインページへ遷移
+				resp.sendRedirect(ui.getLoginURL());
+			} catch (IOException ioe) {
+				// エラーページに飛べたらいいなぁ
+				ioe.printStackTrace();
+			}
 		}
 
+		// リクエスト情報からGreetingへ登録
+		GreetingDAO.insert(ui.getUser(),
+				req.getParameter("content"),
+				new Date());
 
-
-		// ゲストブックjspに戻る
-		resp.sendRedirect("/");
-
+		// トップにリダイレクト
+		Request.doRedirect(resp, "/guestbook");
 	}
+
 }

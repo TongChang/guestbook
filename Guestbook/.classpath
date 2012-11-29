@@ -3,5 +3,8 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="C:/Documents and Settings/としふに/git/guestbook/Guestbook/ビルドパス用lib/repackaged-appengine-jasper-jdt-6.0.29.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Documents and Settings/としふに/git/guestbook/Guestbook/ビルドパス用lib/repackaged-appengine-jakarta-jstl-1.1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Documents and Settings/としふに/git/guestbook/Guestbook/ビルドパス用lib/repackaged-appengine-jakarta-standard-1.1.2.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>
